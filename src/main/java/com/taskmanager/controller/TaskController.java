@@ -2,7 +2,6 @@ package com.taskmanager.controller;
 
 import com.taskmanager.model.Task;
 import com.taskmanager.service.TaskService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class TaskController {
     
     @Autowired
@@ -30,15 +29,13 @@ public class TaskController {
     }
     
     @PostMapping
-    public ResponseEntity<Task> createTask(@Valid @RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
         Task created = taskService.createTask(task);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(
-            @PathVariable Long id, 
-            @Valid @RequestBody Task task) {
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         Task updated = taskService.updateTask(id, task);
         return ResponseEntity.ok(updated);
     }
@@ -47,20 +44,5 @@ public class TaskController {
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
-    }
-    
-    @GetMapping("/search")
-    public ResponseEntity<List<Task>> searchTasks(@RequestParam String keyword) {
-        return ResponseEntity.ok(taskService.searchTasks(keyword));
-    }
-    
-    @GetMapping("/status/{status}")
-    public ResponseEntity<List<Task>> getTasksByStatus(@PathVariable Task.Status status) {
-        return ResponseEntity.ok(taskService.getTasksByStatus(status));
-    }
-    
-    @GetMapping("/priority/{priority}")
-    public ResponseEntity<List<Task>> getTasksByPriority(@PathVariable Task.Priority priority) {
-        return ResponseEntity.ok(taskService.getTasksByPriority(priority));
     }
 }

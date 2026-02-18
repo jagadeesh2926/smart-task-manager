@@ -31,27 +31,14 @@ public class TaskService {
         
         task.setTitle(taskDetails.getTitle());
         task.setDescription(taskDetails.getDescription());
-        task.setPriority(taskDetails.getPriority());
         task.setStatus(taskDetails.getStatus());
+        task.setPriority(taskDetails.getPriority());
         task.setCategory(taskDetails.getCategory());
-        task.setDueDate(taskDetails.getDueDate());
         
         return taskRepository.save(task);
     }
     
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
-    }
-    
-    public List<Task> searchTasks(String keyword) {
-        return taskRepository.findByTitleContainingIgnoreCase(keyword);
-    }
-    
-    public List<Task> getTasksByStatus(Task.Status status) {
-        return taskRepository.findByStatus(status);
-    }
-    
-    public List<Task> getTasksByPriority(Task.Priority priority) {
-        return taskRepository.findByPriority(priority);
     }
 }
