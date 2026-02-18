@@ -151,10 +151,10 @@ This project is licensed under the MIT License.
 
 ## 👤 Author
 
-**Your Name**
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+**Jagadeesh Bandaru**
+- LinkedIn: [Jagadeesh Bandaru](https://linkedin.com/in/jagadeesh-bandaru-050b85292)
+- GitHub: [@jagadeesh2926](https://github.com/jagadeesh2926)
+- Email: jagadeeshbandaru05@gmail.com
 
 ## 🙏 Acknowledgments
 
